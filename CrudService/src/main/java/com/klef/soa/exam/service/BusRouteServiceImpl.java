@@ -60,8 +60,8 @@ public class BusRouteServiceImpl implements BusRouteService {
 			obj.setEndPoint(route.getEndPoint());
 			obj.setRouteNumber(route.getRouteNumber());
 			obj.setStartPoint(route.getStartPoint());
-			
-		return obj ;
+		 BusRoute object =	repo.save(obj);
+		return object ;
 }
 
 
