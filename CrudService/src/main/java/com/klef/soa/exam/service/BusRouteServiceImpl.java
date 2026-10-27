@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.klef.soa.exam.dto.BusRouteDto;
 import com.klef.soa.exam.entity.BusRoute;
 import com.klef.soa.exam.repository.CrudServiceRepository;
 
@@ -16,7 +17,7 @@ public class BusRouteServiceImpl implements BusRouteService {
 	public CrudServiceRepository repo ;
 	
 	@Override
-	public BusRoute addRoute(BusRoute request) {
+	public BusRoute addRoute(BusRouteDto request) {
 		BusRoute route = new BusRoute();
 		route.setDistanceKm(request.getDistanceKm());
 		route.setRouteNumber(request.getRouteNumber());
@@ -24,9 +25,9 @@ public class BusRouteServiceImpl implements BusRouteService {
 		route.setStartPoint(request.getStartPoint());
 		BusRoute saved =  repo.save(route);
 		
-		
 		return saved ;
 	}
+	
 
 	@Override
 	public List<BusRoute> displayAll() {
@@ -47,5 +48,33 @@ public class BusRouteServiceImpl implements BusRouteService {
 		}
 //		return null;
 	}
+
+	@Override
+	public BusRoute update(BusRouteDto route, Long id) {
+		Optional<BusRoute> container = repo.findById(id);
+		if(container.isEmpty()) {
+			return null ;
+		}
+			BusRoute obj = container.get();
+			obj.setDistanceKm(route.getDistanceKm());
+			obj.setEndPoint(route.getEndPoint());
+			obj.setRouteNumber(route.getRouteNumber());
+			obj.setStartPoint(route.getStartPoint());
+			
+		return obj ;
+}
+
+
+	@Override
+	public BusRoute displayById(Long id) {
+	  Optional<BusRoute> container =  repo.findById(id);
+	  if(container.isPresent()) {
+		  return container.get();
+	  }
+		return null;
+	}
+	
+	
+	
 
 }
