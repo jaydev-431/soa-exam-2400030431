@@ -2,6 +2,7 @@
 services:
   frontend:
     image: jayadev30431/docker-frontend-2400030431:latest
+    pull_policy: always
     ports:
       - "5173:80"
     depends_on:
@@ -10,6 +11,7 @@ services:
 
   backend:
     image: jayadev30431/docker-backend-2400030431:latest
+    pull_policy: always
     ports:
       - "8083:8083"
     environment:
@@ -23,6 +25,8 @@ services:
 
   postgres:
     image: postgres:16
+    ports:
+      - "5432:5432"
     environment:
       POSTGRES_DB: exam_2400030431
       POSTGRES_USER: postgres
@@ -30,7 +34,7 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U ${postgres} -d ${exam_2400030431}"]
+      test: ["CMD-SHELL", "pg_isready -U postgres -d exam_2400030431"]
       interval: 5s
       timeout: 5s
       retries: 10
