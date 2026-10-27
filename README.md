@@ -15,7 +15,7 @@ The `docker-compose.yml` file makes it easy to run the entire application on any
 It pulls the latest frontend, backend, and PostgreSQL images from Docker Hub and starts all the containers together.
 
 The PostgreSQL data is stored in a persistent Docker volume, so the data remains available even if the containers are stopped or recreated.
-## How to Run
+## To Run
 
 Clone the repository and navigate to the project folder. With Docker installed, start the application using Docker Compose:
 
