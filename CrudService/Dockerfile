@@ -1,21 +1,31 @@
-
-# Stage 1: Build the Spring Boot application
-FROM maven:3.9-eclipse-temurin-21 AS build
+# Stage 1: Build Spring Boot application
+FROM eclipse-temurin:21-jdk AS build
 
 WORKDIR /app
 
+# Copy Maven wrapper and pom.xml
+COPY mvnw .
+COPY .mvn .mvn
 COPY pom.xml .
+
+# Copy source code
 COPY src ./src
 
-RUN mvn clean package -DskipTests
+# Give permission to Maven wrapper
+RUN chmod +x mvnw
 
-# Stage 2: Run the application
+# Build application
+RUN ./mvnw clean package -DskipTests
+
+
+# Stage 2: Run Spring Boot application
 FROM eclipse-temurin:21-jre
 
 WORKDIR /app
 
+# Copy generated JAR file
 COPY --from=build /app/target/*.jar app.jar
 
-EXPOSE 8080
+EXPOSE 2028
 
 ENTRYPOINT ["java", "-jar", "app.jar"]
