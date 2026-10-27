@@ -34,6 +34,6 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: ./BusRoute-React
-          file: ./BusReact-React/Dockerfile
+          file: ./BusRoute-React/Dockerfile
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/docker-git-actions-frontend:latest
