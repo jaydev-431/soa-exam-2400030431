@@ -20,8 +20,7 @@ The PostgreSQL data is stored in a persistent Docker volume, so the data remains
 Clone the repository and navigate to the project folder. With Docker installed, start the application using Docker Compose:
 
 ```bash
-git clone <your-repository-url>
-cd <project-folder>
+git clone https://github.com/jaydev-431/soa-exam-2400030431
 docker compose up -d
 ```
 
