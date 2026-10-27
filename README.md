@@ -15,18 +15,19 @@ The `docker-compose.yml` file makes it easy to run the entire application on any
 It pulls the latest frontend, backend, and PostgreSQL images from Docker Hub and starts all the containers together.
 
 The PostgreSQL data is stored in a persistent Docker volume, so the data remains available even if the containers are stopped or recreated.
-
 ## How to Run
 
-Make sure Docker and Docker Compose are installed, then run:
+Clone the repository and navigate to the project folder. With Docker installed, start the application using Docker Compose:
 
 ```bash
-docker compose pull
+git clone <your-repository-url>
+cd <project-folder>
 docker compose up -d
 ```
 
-Docker Compose downloads the latest images and starts the application.
+Docker Compose will pull the required images from Docker Hub if they are not available locally and start the frontend, backend, and PostgreSQL containers.
 
+The database uses a persistent volume to retain data across container restarts.
 ## Technologies Used
 
 - React
