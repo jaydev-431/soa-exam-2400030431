@@ -26,7 +26,7 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: ./CrudService
-          file: ./CrusService/backend.Dockerfile
+          file: ./CrusService/Dockerfile
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/docker-git-actions-backend:latest
 
@@ -34,6 +34,6 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: ./BusRoute-React
-          file: ./BusReact-React/frontend.Dockerfile
+          file: ./BusReact-React/Dockerfile
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/docker-git-actions-frontend:latest
