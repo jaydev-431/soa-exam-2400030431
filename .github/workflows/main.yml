@@ -26,15 +26,15 @@ jobs:
       - name: Build and push frontend
         uses: docker/build-push-action@v6
         with:
-          context: ./frontend
-          file: ./frontend/Dockerfile
+          context: ./BusRoute-React
+          file: ./BusRoute-React/Dockerfile
           push: true
           tags: Jayadev30431/docker-frontend-2400030431:latest
 
       - name: Build and push backend
         uses: docker/build-push-action@v6
         with:
-          context: ./backend
-          file: ./backend/Dockerfile
+          context: ./CrudService
+          file: ./CrudService/Dockerfile
           push: true
           tags: Jayadev30431/docker-backend-2400030431:latest
