@@ -1,18 +1,26 @@
 package com.klef.soa.exam.dto;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.Size;
+
 public class BusRouteDto {
 
 
-	private String routeNumber ;
-	
+	@NotBlank(message = "Route number is required")
+	@Size(max = 20, message = "Route number cannot exceed 20 characters")
+	private String routeNumber;
 
-	private String startPoint ;
-	
+	@NotBlank(message = "Start point is required")
+	@Size(max = 100, message = "Start point cannot exceed 100 characters")
+	private String startPoint;
 
-	private String endPoint ;
-	
+	@NotBlank(message = "End point is required")
+	@Size(max = 100, message = "End point cannot exceed 100 characters")
+	private String endPoint;
 
-	private double distanceKm ;
+	@Positive(message = "Distance must be greater than zero")
+	private double distanceKm;
 
 
 	
